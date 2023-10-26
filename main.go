@@ -4,15 +4,17 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
-	
+	"strings"
+
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	extapi "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1"
+	extAPI "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1"
 	"k8s.io/client-go/rest"
+	"k8s.io/client-go/kubernetes"
 
 	webhookapi "github.com/cert-manager/cert-manager/pkg/acme/webhook/apis/acme/v1alpha1"
 	webhookcmd "github.com/cert-manager/cert-manager/pkg/acme/webhook/cmd"
-	certmgrv1 "github.com/cert-manager/pkg/apis/meta/v1"
-	"github.com/cert-manager/pkg/issuer/acme/dns/util"
+	certmgrv1 "github.com/cert-manager/cert-manager/pkg/apis/meta/v1"
+	"github.com/cert-manager/cert-manager/pkg/issuer/acme/dns/util"	
 	"github.com/mhenderson-so/godnsmadeeasy/src/GoDNSMadeEasy"
 )
 const (
@@ -70,8 +72,8 @@ type DNSMadeEasyProviderConfig struct {
 	// These fields will be set by users in the
 	// `issuer.spec.acme.dns01.providers.webhook.config` field.
 
-	APIKeyRef    v1alpha1.SecretKeySelector `json:"apiKeyRef"`
-	APISecretRef v1alpha1.SecretKeySelector `json:"apiSecretRef"`
+	APIKeyRef    webhookapi.SecretKeySelector `json:"apiKeyRef"`
+	APISecretRef webhookapi.SecretKeySelector `json:"apiSecretRef"`
   TTL          *int                        `json:"ttl"`
   Sandbox      bool                        `json:"sandbox"`
   //Secrets directly in config - not recomended -> use secrets!
