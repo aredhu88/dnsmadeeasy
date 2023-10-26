@@ -4,12 +4,14 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
-
+	
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	extapi "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1"
 	"k8s.io/client-go/rest"
 
-	"github.com/cert-manager/cert-manager/pkg/acme/webhook/apis/acme/v1alpha1"
-	"github.com/cert-manager/cert-manager/pkg/acme/webhook/cmd"
+	webhookapi "github.com/cert-manager/cert-manager/pkg/acme/webhook/apis/acme/v1alpha1"
+	webhookcmd "github.com/cert-manager/cert-manager/pkg/acme/webhook/cmd"
+	certmgrv1 "github.com/cert-manager/pkg/apis/meta/v1"
 	"github.com/mhenderson-so/godnsmadeeasy/src/GoDNSMadeEasy"
 )
 const (
