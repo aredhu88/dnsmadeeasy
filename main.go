@@ -217,7 +217,7 @@ func (c *DNSMadeEasyProviderSolver) getDnsClient(ch *webhookapi.ChallengeRequest
   	if ref.Key == "" || ref.Name == "" {
   		return nil, fmt.Errorf("no apiKeyRef for %q in secret '%s/%s'", ref.Name, ref.Key, ch.ResourceNamespace)
   	}
-  	secret, err := c.client.CoreV1().Secrets(ch.ResourceNamespace).Get(ref.Name, metav1.GetOptions{})
+  	secret, err := c.client.CoreV1().Secrets(namespace).Get(context.TODO(), cfg.APIKeySecretRef.LocalObjectReference.Name, metav1.GetOptions{})
   	if err != nil {
   		return nil, err
   	}
@@ -235,7 +235,7 @@ func (c *DNSMadeEasyProviderSolver) getDnsClient(ch *webhookapi.ChallengeRequest
   	if ref.Key == "" || ref.Name == "" {
   		return nil, fmt.Errorf("no apiSecretRef for %q in secret '%s/%s'", ref.Name, ref.Key, ch.ResourceNamespace)
   	}
-    secret, err := c.client.CoreV1().Secrets(ch.ResourceNamespace).Get(ref.Name, metav1.GetOptions{})
+    secret, err := c.client.CoreV1().Secrets(namespace).Get(context.TODO(), cfg.APISecretSecretRef.LocalObjectReference.Name, metav1.GetOptions{})
   	if err != nil {
   		return nil, err
   	}
