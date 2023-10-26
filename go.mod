@@ -10,6 +10,7 @@ require (
 	github.com/cert-manager/cert-manager v1.11.0
 	github.com/miekg/dns v1.1.50
 	github.com/stretchr/testify v1.8.1
+        github.com/mhenderson-so/godnsmadeeasy v0.0.0-20161117210134-6c4a59b67887
 	k8s.io/apiextensions-apiserver v0.26.0
 	k8s.io/client-go v0.26.0
 )
