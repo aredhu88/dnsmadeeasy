@@ -12,6 +12,7 @@ import (
 	webhookapi "github.com/cert-manager/cert-manager/pkg/acme/webhook/apis/acme/v1alpha1"
 	webhookcmd "github.com/cert-manager/cert-manager/pkg/acme/webhook/cmd"
 	certmgrv1 "github.com/cert-manager/pkg/apis/meta/v1"
+	"github.com/cert-manager/pkg/issuer/acme/dns/util"
 	"github.com/mhenderson-so/godnsmadeeasy/src/GoDNSMadeEasy"
 )
 const (
