@@ -8,6 +8,7 @@ import (
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	extAPI "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1"
+	certmgrv1 "github.com/cert-manager/cert-manager/pkg/apis/meta/v1"
 	"k8s.io/client-go/rest"
 	"k8s.io/client-go/kubernetes"
 
@@ -71,8 +72,8 @@ type DNSMadeEasyProviderConfig struct {
 	// These fields will be set by users in the
 	// `issuer.spec.acme.dns01.providers.webhook.config` field.
 
-	APIKeyRef    v1alpha1.SecretKeySelector `json:"apiKeyRef"`
-	APISecretRef v1alpha1.SecretKeySelector `json:"apiSecretRef"`
+	APIKeyRef    certmgrv1.SecretKeySelector `json:"apiKeyRef"`
+	APISecretRef certmgrv1.SecretKeySelector `json:"apiSecretRef"`
   TTL          *int                        `json:"ttl"`
   Sandbox      bool                        `json:"sandbox"`
   //Secrets directly in config - not recomended -> use secrets!
