@@ -13,7 +13,6 @@ import (
 
 	webhookapi "github.com/cert-manager/cert-manager/pkg/acme/webhook/apis/acme/v1alpha1"
 	webhookcmd "github.com/cert-manager/cert-manager/pkg/acme/webhook/cmd"
-	certmgrv1 "github.com/cert-manager/cert-manager/pkg/apis/meta/v1"
 	"github.com/cert-manager/cert-manager/pkg/issuer/acme/dns/util"	
 	"github.com/mhenderson-so/godnsmadeeasy/src/GoDNSMadeEasy"
 )
@@ -72,8 +71,8 @@ type DNSMadeEasyProviderConfig struct {
 	// These fields will be set by users in the
 	// `issuer.spec.acme.dns01.providers.webhook.config` field.
 
-	APIKeyRef    webhookapi.SecretKeySelector `json:"apiKeyRef"`
-	APISecretRef webhookapi.SecretKeySelector `json:"apiSecretRef"`
+	APIKeyRef    v1alpha1.SecretKeySelector `json:"apiKeyRef"`
+	APISecretRef v1alpha1.SecretKeySelector `json:"apiSecretRef"`
   TTL          *int                        `json:"ttl"`
   Sandbox      bool                        `json:"sandbox"`
   //Secrets directly in config - not recomended -> use secrets!
